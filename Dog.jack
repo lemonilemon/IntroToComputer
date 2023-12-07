@@ -1,0 +1,50 @@
+class Dog {
+    field int x, y; //the dog's screen location
+    field int HP;
+    field int ATK;
+    field int speed;
+    field int rightWall;
+
+
+    constructor Dog new(int Ax, int Ay, int ArightWall, int AHP, int AATK) {
+        let x = Ax;
+        let y = Ay;
+        let rightWall = ArightWall - 51;
+        let HP = AHP;
+        let ATK = AATK;
+        return this;
+    }
+
+    /** Deallocates the Dog's memory. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Show the Dog. */
+    method void show() {
+        do Screen.setColor(true);
+        do draw();
+        return;
+    }
+
+    /** Hide the Dog. */
+    method void hide() {
+        do Screen.setColor(false);
+        do draw();
+        return;
+    }
+
+    /** Draw the Dog. */
+    method void draw() {
+        do Screen.drawRectangle(x , y, x + 50, y + 50);
+        return;
+    }
+
+    // method void move() {
+        
+    // }
+
+
+
+}
