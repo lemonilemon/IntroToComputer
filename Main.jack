@@ -1,6 +1,8 @@
 class Main {
     function void main() {
-        do Screen.clearScreen();         
+        var Game game;
+        do game.run();
+        do game.dispose();
         return;
     }
 }

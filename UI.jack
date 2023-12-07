@@ -7,10 +7,55 @@ class UI {
         let options[0] = "Start";
         let options[1] = "End";
         let chosen_option = 0;
+        do display();
         return this;
     }
-    method int getoption() {
-        return chosen_option;
+    method int getopt() {
+        var char key;
+        while(key = 0) {
+            do Sys.wait(120);
+            do display();
+            let key = Keyboard.keyPressed();
+            if(key = 130) { // left arrow
+                if(chosen_option = 1) {
+                    let chosen_option = 0;
+                }
+            }
+            if(key = 132) { // right arrow
+                if(chosen_option = 0) {
+                    let chosen_option = 1;
+                }
+            }
+            if(key = 88) { // x key
+                return chosen_option;
+            }
+            let key = 0;
+        }
+        return -1;
+    }
+    method void display() {
+        var int x1, y1, x2, y2, d;
+        do Screen.clearScreen();
+        let d = 3;
+        let x1 = 100;
+        let y1 = 170;
+        let x2 = 200;
+        let y2 = 200;
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x1, y1, x2, y2);
+        if(chosen_option = 0) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1 + d, y1 + d, x2 - d, y2 - d);
+        }
+        let x1 = 310;
+        let x2 = 410;
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x1, y1, x2, y2);
+        if(chosen_option = 1) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1 + d, y1 + d, x2 - d, y2 - d);
+        }
+        return;
     }
     method void dispose() {
         do Screen.clearScreen();

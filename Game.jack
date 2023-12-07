@@ -1,0 +1,22 @@
+class Game {
+    constructor Game new() {
+        return this;
+    }
+    method void run() {
+        var UI ui;
+        var int opt;
+        let ui = UI.new();
+        let opt = ui.getopt();
+        do ui.dispose(); 
+        if(opt = 0) {
+            do Output.printString("Hello World");
+            do Sys.halt();
+        } 
+        return;
+    }
+    method void dispose() {
+        do Screen.clearScreen();
+        // do Memory.deAlloc(this);
+        return;
+    }
+}
