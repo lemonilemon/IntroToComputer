@@ -43,6 +43,7 @@ class UI {
         let y2 = 200;
         do Screen.setColor(true);
         do Screen.drawRectangle(x1, y1, x2, y2);
+        Output.moveCursor(
         if(chosen_option = 0) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x1 + d, y1 + d, x2 - d, y2 - d);
