@@ -35,7 +35,7 @@ class Castle {
     if(nowHP > 0){
       do drawblood();
     }else{
-      nowHP = 0;
+      let nowHP = 0;
       do drawblood();
       do Output.printString("Game Over!");
     }
