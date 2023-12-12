@@ -7,14 +7,19 @@ class Dog {
     static int rightWall;
     field int count;
     field int direction;
+    field int atkcount;
+    field int atkspeed;
 
-    constructor Dog new(int Ax, int Ay, int ArightWall, int AHP, int AATK, int Adirection) {
+    constructor Dog new(int Ax, int Ay, int ArightWall, int AHP, int AATK, int AATKspeed, int Adirection) {
         let x = Ax;
         let y = Ay;
+        let atkspeed = AATKspeed;
         let rightWall = ArightWall - 51;//Debug
         let HP = AHP;
         let ATK = AATK;
         let direction = Adirection;
+        let count = 0;
+        let atkcount =0;
         return this;
     }
 
@@ -31,10 +36,19 @@ class Dog {
         return;
     }
 
+    method int act() {
+        if(x = rightWall) {
+            return attack();
+        }
+        else {
+            do move();
+            return 0;
+        }
+
+    } 
     method void move() {
         var int mod;
         let mod = count - ((count / 5)*5);
-        if()
         if(mod = 0) {
             let x = x + 1;
             let count = 0;
@@ -43,10 +57,21 @@ class Dog {
         return;
     }
 
-    method void attack() [
-
-
-    ]
+    /** Let Dog Attack */
+    method int attack() {
+        let atkcount = atkcount +1;
+        if(atkcount = atkspeed) {
+            let atkcount = 0;
+            return ATK;
+        } 
+        return 0;
+    }
+    
+    method void TakeAnyDamage(int damage)
+    {
+        HP = HP - damage;
+        return;
+    }
 
 
 
