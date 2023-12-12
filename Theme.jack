@@ -7,66 +7,95 @@ class Theme {
         let BadDogs = LinkedList.new();
         return this;
     }
+    method int getTargetDog() {
+        var int targetDogIdx;
+        var int idx;
+        var int leftwall;
+        var Dog cur;
+        var Element it; // iterator
+        let leftwall = 60; // dogcastle 
+        let it = Dogs.getFront(); 
+        let idx = 0;
+        while(~(it = null)) {
+            let cur = it.getData();
+            if(cur.Location() + 60 > leftwall) {
+                let leftwall = cur.Location() + 60;
+                let targetDogIdx = idx;
+            }
+            let idx = idx + 1;
+            let it = it.getNext(); 
+        } 
+        /** Set wall */
+        do Dog.Change_leftWall(leftwall);
+        return targetDogIdx;
+    }
+    method int getTargetBadDog() {
+        var int targetBadDogIdx;
+        var int idx;
+        var int rightwall;
+        var Dog cur;
+        var Element it;
+        let rightwall = 300; // baddogcastle
+        let it = BadDogs.getFront(); 
+        let idx = 0;
+        while(~(it = null)) {
+            let cur = it.getData();
+            if(cur.Location() - 60 < rightwall) {
+                let rightwall = cur.Location() - 60;
+                let targetBadDogIdx = idx;
+            }
+            let idx = idx + 1;
+            let it = it.getNext(); 
+        }
+        /** Set wall */
+        do Dog.Change_rightWall(rightwall);
+        return targetBadDogIdx;
+    }
     method void run() {     
         var Element it;
         var Dog cur;
-        var int leftwall, rightwall;
+        var Dog targetDog, targetBadDog;
+        var int targetDogIdx, targetBadDogIdx;
         var int damage;
-        var int idx;
-        var int dogidx, baddogidx;
         do Dog.Change_y(150);
-        do Dogs.push(Dog.new(10, 10, 10, 5, 1));
-        // do BadDogs.push(Dog.new(100, 10, 10, 10, -1));
-        // let DogCastle = Castle.new(100, 100, 100);
-        let BadDogCastle = Castle.new(100, 100, 100);
+        do Dogs.push(Dog.new(60, 10, 10, 5, 1));
+        do BadDogs.push(Dog.new(250, 10, 10, 10, -1));
+        let DogCastle = Castle.new(50, 100, 100);
+        let BadDogCastle = Castle.new(300, 100, 100);
         while(true) {
             do Sys.wait(50);
+
             /** Find right most dog */
-            let leftwall = 60; // dogcastle
-            let dogidx = -1;
-            let idx = 0;
-            let it = Dogs.getFront(); 
-            while(~(it = null)) {
-                let cur = it.getData();
-                if(cur.Location() + 60 > leftwall) {
-                    let leftwall = cur.Location() + 60;
-                    let dogidx = idx;
-                }
-                let idx = idx + 1;
-                let it = it.getNext(); 
-            }
+            let targetDogIdx = getTargetDog();   
+            let targetDog = Dogs.getElement(targetDogIdx);
+
             /** Find left most baddog */
-            let rightwall = 50; // baddogcastle
-            let baddogidx = -1;
-            let idx = 0;
-            let it = BadDogs.getFront(); 
-            while(~(it = null)) {
-                let cur = it.getData();
-                if(cur.Location() - 60 < rightwall) {
-                    let rightwall = cur.Location() - 60;
-                    let baddogidx = idx;
-                }
-                let idx = idx + 1;
-                let it = it.getNext(); 
-            }
+            let targetBadDogIdx = getTargetBadDog(); 
+            let targetBadDog = BadDogs.getElement(targetBadDogIdx);
 
             //** Start rendering */
             do Screen.clearScreen();
-
-            /** Set wall */
-            do Dog.Change_leftWall(leftwall);
-            do Dog.Change_rightWall(rightwall);
-            
+ 
             /** Dog Action */
             let it = Dogs.getFront(); 
             while(~(it = null)) {
                 let cur = it.getData();
                 let damage = cur.act();
-                if(baddogidx = -1) {
-                    do BadDogCastle.damage(damage);
-                } 
-                else {
-
+                if(damage > 0) {
+                    if(targetBadDog = null) {
+                        if(BadDogCastle.damage(damage)) {
+                            do Screen.clearScreen();
+                            do Output.printString("You win!");
+                            do Sys.halt();    
+                        }
+                    } 
+                    else {
+                        if(targetBadDog.TakeAnyDamage(damage)) {
+                            do BadDogs.pop(targetBadDogIdx);  
+                            let targetBadDogIdx = getTargetBadDog();   
+                            let targetBadDog = BadDogs.getElement(targetBadDogIdx);
+                        }
+                    }
                 }
                 let it = it.getNext();
             }
@@ -74,11 +103,21 @@ class Theme {
             while(~(it = null)) {
                 let cur = it.getData();
                 let damage = cur.act(); 
-                if(dogidx = -1) { 
-                    do DogCastle.damage(damage);
-                } 
-                else {
-                    
+                if(damage > 0) {
+                    if(targetDog = null) { 
+                        if(DogCastle.damage(damage)) {
+                            do Screen.clearScreen();
+                            do Output.printString("You lose!");
+                            do Sys.halt();    
+                        }
+                    } 
+                    else {
+                        if(targetDog.TakeAnyDamage(damage)) {
+                            do Dogs.pop(targetDogIdx); 
+                            let targetDogIdx = getTargetDog();   
+                            let targetDog = Dogs.getElement(targetDogIdx);
+                        } 
+                    }
                 }
                 let it = it.getNext();
             }
@@ -103,8 +142,8 @@ class Theme {
             /** Check if the game end */
 
             /** Draw blood */
-            // do DogCastle.drawblood();
-            do BadDogCastle.drawblood();
+            do DogCastle.draw();
+            do BadDogCastle.draw();
         } 
         return;
     }
