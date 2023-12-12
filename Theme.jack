@@ -1,29 +1,54 @@
 class Theme {
-    field int DogNum;
     field Castle DogCastle, BadDogCastle;
-    field LinkedList Dogs; 
+    field LinkedList Dogs, BadDogs; 
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
-        let DogNum = 0; 
+        let BadDogs = LinkedList.new();
         return this;
     }
     method void run() {     
         var Element it;
         var Dog cur;
-        do Dogs.push(Dog.new(10, 200, 323, 10, 10, 1));
-        do Dogs.push(Dog.new(80, 200, 323, 10, 10, 1));
+        var int leftwall, rightwall;
+        var int damage;
+        do Dog.Change_y(100);
+        do Dogs.push(Dog.new(10, 10, 10, 10, 1));
+        do Dogs.push(Dog.new(100, 10, 10, 10, -1));
         let DogCastle = Castle.new(100, 100, 100);
         while(true) {
             do Sys.wait(50);
-            /** Check whether the dog is dead */
 
-            /** Move Dogs */
+            /** Find left most baddog */
+            let leftwall = 1024; // INF
             let it = Dogs.getFront(); 
             while(~(it = null)) {
                 let cur = it.getData();
-                do cur.move();
+                let leftwall = Math.min(leftwall, cur.Location() + 30);
+                let it = it.getNext(); 
+            }
+            /** Find right most dog */
+            let rightwall = -1;
+            let it = BadDogs.getFront(); 
+            while(~(it = null)) {
+                let cur = it.getData();
+                let rightwall = Math.max(rightwall, cur.Location() - 30);
+                let it = it.getNext(); 
+            }
+            /** Set wall */
+            do Dog.Change_leftWall(leftwall);
+            do Dog.Change_rightWall(rightwall);
+            
+            /** Dog Action */
+            let it = Dogs.getFront(); 
+            while(~(it = null)) {
+                let cur = it.getData();
+                let damage = cur.act();
+                
                 let it = it.getNext();
             }
+
+            /** Check whether the dog is dead */
+
 
             //** Start rendering */
             do Screen.clearScreen();
@@ -35,7 +60,8 @@ class Theme {
                 do cur.show();
                 let it = it.getNext();
             }
-            do DogCastle.damage(1);
+            /** Check if the game end */
+
             /** Draw blood */
             do DogCastle.drawblood();
         } 

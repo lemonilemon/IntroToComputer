@@ -44,9 +44,8 @@ class Dog {
                 do move();
                 return 0;
             }
-        }
-        
-        else if(direction = -1) {
+        }        
+        else {
             if(x = leftWall) {
                 return attack();
             }
@@ -54,14 +53,13 @@ class Dog {
                 do move();
                 return 0;
             }
-        }
-
+        } 
     } 
     method void move() {
         var int mod;
         let mod = count - ((count / 5)*5);
         if(mod = 0) {
-            let x = x + 1;
+            let x = x + direction;
             let count = 0;
         }
         let count = count + 1;
@@ -85,6 +83,19 @@ class Dog {
 
     method int Location() {
         return x;
+    }
+
+    function void Change_y(int val) {
+        let y = val;
+        return;
+    }
+    function void Change_leftWall(int val) {
+        let leftWall = val;
+        return;
+    }
+    function void Change_rightWall(int val) {
+        let rightWall = val;
+        return;
     }
 
 
