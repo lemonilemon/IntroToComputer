@@ -67,9 +67,8 @@ class Dog {
         return 0;
     }
     
-    method void TakeAnyDamage(int damage)
-    {
-        HP = HP - damage;
+    method void TakeAnyDamage(int damage) {
+        let HP = HP - damage;
         return;
     }
 
