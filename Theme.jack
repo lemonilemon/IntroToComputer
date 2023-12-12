@@ -1,5 +1,6 @@
 class Theme {
     field int DogNum;
+    field Castle DogCastle, BadDogCastle;
     field LinkedList Dogs; 
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
@@ -11,6 +12,7 @@ class Theme {
         var Dog cur;
         do Dogs.push(Dog.new(10, 200, 323, 10, 10, 1));
         do Dogs.push(Dog.new(80, 200, 323, 10, 10, 1));
+        let DogCastle = Castle.new(100, 100, 100);
         while(true) {
             do Sys.wait(50);
             /** Check whether the dog is dead */
@@ -33,7 +35,10 @@ class Theme {
                 do cur.show();
                 let it = it.getNext();
             }
-        }
+
+            /** Draw blood */
+            do DogCastle.drawblood();
+        } 
         return;
     }
 }
