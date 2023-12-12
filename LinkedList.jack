@@ -10,33 +10,35 @@ class LinkedList {
     }
     method void push(Dog dog) {
         if(sz = 0) {
-            let front = new Element(dog);
+            let front = Element.new(dog);
             let back = front;
         }
         else {
-            let back.next = new Element(dog); 
-            let back = back.next;
+            do back.setNext(Element.new(dog));
+            let back = back.getNext();
         }
         let sz = sz + 1;
         return;
     }
     method void pop(int k) {
-        var cur;
-        var last;
-        if(k >= sz) return;
+        var Element cur;
+        var Element last;
+        if(k > sz | k = sz) {
+            return;
+        }
         let cur = front;
         let last = null;
         if(k = 0) {
-            front = front.next;
+            let front = front.getNext();
         }
         else {
             while(k > 0) {
                 let last = cur;
                 let k = k - 1;
-                let cur = cur.next;
+                let cur = cur.getNext();
             }
         }
-        if(cur.next = null) {
+        if(cur.getNext() = null) {
             let back = last;
         }
         do cur.dispose();
@@ -44,11 +46,11 @@ class LinkedList {
         return;
     }
     method void dispose() {
-        var cur;
-        var nxt;
+        var Element cur;
+        var Element nxt;
         let cur = front;
         while(~(cur = null)) {
-            let nxt = cur.next;
+            let nxt = cur.getNext();
             do cur.dispose();
             let cur = nxt;
         }

@@ -3,8 +3,15 @@ class Element {
     field Element next;
     constructor Element new(Dog dog) {
         let data = dog;
-        lext next = null;
+        let next = null;
         return this;
+    }
+    method void setNext(Element nxt) {
+        let next = nxt;
+        return;
+    }
+    method Element getNext() {
+        return next;
     }
     method void dispose() {
         do data.dispose();

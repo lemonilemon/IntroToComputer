@@ -1,8 +1,9 @@
 class Theme {
     field int DogNum;
-    field Array Dogs; 
+    field LinkedList Dogs; 
     constructor Theme new() {
-        Dogs = Dog.new(50); // Number of dogs
-        DogNum = 0; 
+        let Dogs = LinkedList.new(); // Number of dogs
+        let DogNum = 0; 
+        return this;
     }
 }
