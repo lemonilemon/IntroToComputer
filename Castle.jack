@@ -35,8 +35,8 @@ class Castle {
     if(nowHP < 0 | nowHP = 0){
       let nowHP = 0;
       do Output.printString("Game Over!");
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 }
