@@ -31,7 +31,7 @@ class Dog {
         return;
     }
 
-    method void move(int x, int count) {
+    method void move() {
         var int mod;
         let mod = count - ((count / 5)*5);
         if(mod = 0) {

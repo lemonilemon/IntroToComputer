@@ -8,6 +8,9 @@ class LinkedList {
         let back = null;
         return this;
     }
+    method Element getFront() {
+        return front;
+    }
     method void push(Dog dog) {
         if(sz = 0) {
             let front = Element.new(dog);
