@@ -30,12 +30,13 @@ class Castle {
     return;
   }
 
-  method void damage(int Adamage){
+  method boolean damage(int Adamage){
     let nowHP = nowHP - Adamage;
     if(nowHP < 0 | nowHP = 0){
       let nowHP = 0;
       do Output.printString("Game Over!");
+      return false;
     }
-    return;
+    return true;
   }
 }
