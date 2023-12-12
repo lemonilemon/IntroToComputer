@@ -23,6 +23,17 @@ class LinkedList {
         let sz = sz + 1;
         return;
     }
+    method Dog getElement(int k) {
+        var Element cur;
+        /** Make sure that the code is safe */ 
+        // if(k > sz | k = sz) return null;
+        let cur = front;
+        while(k > 0) {
+            let k = k - 1;
+            let cur = cur.getNext();
+        }
+        return cur.getData();
+    }
     method void pop(int k) {
         var Element cur;
         var Element last;
