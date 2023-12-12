@@ -18,7 +18,7 @@ class Castle {
     return;
   }
 
-  method void drawblood() {
+  method void draw() {
     var int pa;
     let pa = (nowHP * 100) / allHP;
     do Screen.setColor(true);

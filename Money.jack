@@ -1,0 +1,52 @@
+class Money {
+  static int money;
+  static int maxmoney;
+  static int count;
+  static int addmoney;
+  static int levelupcost;
+
+  constructor Money new(){
+    let money = 0;
+    let maxmoney = 1000;
+    let count = 0;
+    let addmoney = 1;
+    let levelupcost = 200;
+    return this;
+  }
+
+  function void draw(){
+    do Output.moveCursor(470,20);
+    do Output.printInt(money);
+    do Output.moveCursor(490,20);
+    do Output.printString("/");
+    do Output.moveCursor(500,20);
+    do Output.printInt(Maxmoney);
+    return;
+  }
+
+  function void add(){
+    count = count + 1;
+    if(maxmoney-money>0 & count-(count/5*5)=0){
+      let money = money + addmoney;
+    }
+    return;
+  }
+
+  function boolean sub(int cost){
+    if(money-cost>0|money-cost=0){
+      let money = money - cost;
+      return true;
+    }
+    return false;
+  }
+
+  function void levelup(){
+    if(money-levelupcost>0|money-levelupcost=0){
+      let money = money - levelupcost;
+      maxmoney = maxmoney + 500;
+      addmoney = addmoney + 1;
+      return true;
+    }
+    return false;
+  }
+}
