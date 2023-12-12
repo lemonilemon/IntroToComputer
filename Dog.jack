@@ -26,13 +26,7 @@ class Dog {
 
     /** Show the Dog. */
     method void show() {
-        do Screen.setColor(true);
-        do draw();
-        return;
-    }
-
-    /** Draw the Dog. */
-    method void draw() {
+        do Screen.setColor(true); 
         do Screen.drawRectangle(x , y, x + 50, y + 50);
         return;
     }
