@@ -7,7 +7,6 @@ class Dog {
     static int rightWall;
     field int count;
     field int direction;
-    field int mod;
 
     constructor Dog new(int Ax, int Ay, int ArightWall, int AHP, int AATK, int Adirection) {
         let x = Ax;
@@ -39,6 +38,7 @@ class Dog {
     }
 
     method void move(int x, int count) {
+        var int mod;
         let mod = count - ((count / 5)*5);
         if(mod = 0) {
             let x = x + 1;
