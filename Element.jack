@@ -13,6 +13,9 @@ class Element {
     method Element getNext() {
         return next;
     }
+    method Dog getData() {
+        return data;
+    }
     method void dispose() {
         do data.dispose();
         do Memory.deAlloc(this);

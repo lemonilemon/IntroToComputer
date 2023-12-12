@@ -6,4 +6,29 @@ class Theme {
         let DogNum = 0; 
         return this;
     }
+    method void run() {     
+        var Element it;
+        var Dog cur;
+        do Dogs.push(Dog.new(10, 10, 323, 10, 10, 1));
+        while(true) {
+            do Sys.wait(20);
+            do Screen.clearScreen();
+            /** Check whether the dog is dead */
+            /** Move Dogs */
+            let it = Dogs.getFront(); 
+            while(~(it = null)) {
+                let cur = it.getData();
+                cur.move();
+                let it = it.getNext();
+            }
+            /** Draw Dogs */
+            let it = Dogs.getFront(); 
+            while(~(it = null)) {
+                let cur = it.getData();
+
+                let it = it.getNext();
+            }
+        }
+        return;
+    }
 }
