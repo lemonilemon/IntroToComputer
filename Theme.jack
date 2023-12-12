@@ -1,8 +1,8 @@
 class Theme {
-    field int DogNum, EnemyNum;
-    field Array Dogs, Cats; 
+    field int DogNum;
+    field Array Dogs; 
     constructor Theme new() {
-        Dogs.new(50); // Number of dogs
-        Cats.new(50);
+        Dogs = Dog.new(50); // Number of dogs
+        DogNum = 0; 
     }
 }
