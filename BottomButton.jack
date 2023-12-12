@@ -19,7 +19,7 @@ class BottomButton{
     if(iscool){
       let pa=0;
     }else{
-      time=time+1;
+      let time=time+1;
       if(time>cooltime){
         let time=0;
         let iscool=true;
