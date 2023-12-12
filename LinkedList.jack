@@ -1,0 +1,46 @@
+class LinkedList {
+    field int sz;
+    field Element front;
+    field Element back;
+    constructor LinkedList new() {
+        let sz = 0;
+        let front = null;   
+        let back = null;
+        return this;
+    }
+    method void push(Dog dog) {
+        if(sz = 0) {
+            let front = new Element(dog);
+            let back = front;
+        }
+        else {
+            let back.next = new Element(dog); 
+            let back = back.next;
+        }
+        let sz = sz + 1;
+        return;
+    }
+    method void pop(int k) {
+        var cur;
+        if(k >= sz) return;
+        let cur = front;
+        while(k > 0) {
+            let k = k - 1;
+            let cur = cur.next;
+        }
+        let sz = sz - 1;
+        return;
+    }
+    method void dispose() {
+        var cur;
+        var nxt;
+        let cur = front;
+        while(~(cur = null)) {
+            let nxt = cur.next;
+            do cur.dispose();
+            let cur = nxt;
+        }
+        do Memory.deAlloc(this);
+        return;
+    }
+}

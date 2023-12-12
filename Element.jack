@@ -1,0 +1,14 @@
+class Element {
+    field Dog data;
+    field Element next;
+    constructor Element new(Dog dog) {
+        let data = dog;
+        lext next = null;
+        return this;
+    }
+    method void dispose() {
+        do data.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}
