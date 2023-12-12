@@ -35,7 +35,7 @@ class Theme {
                 do cur.show();
                 let it = it.getNext();
             }
-
+            do DogCastle.damage(1);
             /** Draw blood */
             do DogCastle.drawblood();
         } 

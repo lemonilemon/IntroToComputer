@@ -32,11 +32,8 @@ class Castle {
 
   method void damage(int Adamage){
     let nowHP = nowHP - Adamage;
-    if(nowHP > 0){
-      do drawblood();
-    }else{
+    if(nowHP < 0 | nowHP = 0){
       let nowHP = 0;
-      do drawblood();
       do Output.printString("Game Over!");
     }
     return;
