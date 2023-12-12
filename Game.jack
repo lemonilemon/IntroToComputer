@@ -5,17 +5,19 @@ class Game {
     method void run() {
         var UI ui;
         var int opt;
+        var Theme theme;
         let ui = UI.new();
         let opt = ui.getopt();
         do ui.dispose(); 
         if(opt = 0) {
-            do Output.printString("Hello World");
-            do Sys.halt();
+            let theme = Theme.new();
+            do theme.run();
         } 
         return;
     }
     method void dispose() {
         do Screen.clearScreen();
+        /* can't use for now */
         // do Memory.deAlloc(this);
         return;
     }

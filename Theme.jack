@@ -6,4 +6,10 @@ class Theme {
         let DogNum = 0; 
         return this;
     }
+    method void run() {
+        while(true) {
+            do Sys.wait(20);
+        }
+        return;
+    }
 }
