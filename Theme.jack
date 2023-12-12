@@ -9,23 +9,28 @@ class Theme {
     method void run() {     
         var Element it;
         var Dog cur;
-        do Dogs.push(Dog.new(10, 10, 323, 10, 10, 1));
+        do Dogs.push(Dog.new(10, 200, 323, 10, 10, 1));
+        do Dogs.push(Dog.new(80, 200, 323, 10, 10, 1));
         while(true) {
-            do Sys.wait(20);
-            do Screen.clearScreen();
+            do Sys.wait(50);
             /** Check whether the dog is dead */
+
             /** Move Dogs */
             let it = Dogs.getFront(); 
             while(~(it = null)) {
                 let cur = it.getData();
-                cur.move();
+                do cur.move();
                 let it = it.getNext();
             }
+
+            //** Start rendering */
+            do Screen.clearScreen();
+
             /** Draw Dogs */
             let it = Dogs.getFront(); 
             while(~(it = null)) {
                 let cur = it.getData();
-
+                do cur.show();
                 let it = it.getNext();
             }
         }
