@@ -20,7 +20,7 @@ class Money {
     do Output.moveCursor(490,20);
     do Output.printString("/");
     do Output.moveCursor(500,20);
-    do Output.printInt(Maxmoney);
+    do Output.printInt(maxmoney);
     return;
   }
 
