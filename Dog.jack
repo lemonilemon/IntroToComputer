@@ -10,6 +10,7 @@ class Dog {
     field int atkcount;
     field int atkspeed;
     static int leftWall;
+    field boolean die;
 
     constructor Dog new(int Ax, int AHP, int AATK, int AATKspeed, int Adirection) {
         let x = Ax;
@@ -76,9 +77,12 @@ class Dog {
         return 0;
     }
     
-    method void TakeAnyDamage(int damage) {
+    method boolean TakeAnyDamage(int damage) {
         let HP = HP - damage;
-        return;
+        if(HP < 1) {
+            return true;
+        }
+        return false;
     }
 
     method int Location() {
