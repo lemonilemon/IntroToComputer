@@ -34,6 +34,7 @@ class Dog {
     method void move() {
         var int mod;
         let mod = count - ((count / 5)*5);
+        if()
         if(mod = 0) {
             let x = x + 1;
             let count = 0;
@@ -41,6 +42,12 @@ class Dog {
         let count = count + 1;
         return;
     }
+
+    method void attack() [
+
+
+    ]
+
 
 
 
