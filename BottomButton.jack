@@ -1,0 +1,43 @@
+class BottomButton{
+  field int x;
+  field int y;
+  field int time;
+  field int cooltime;
+  field boolean iscool;
+
+  constructor BottomButton new(int Ax,int Ay,int Acooltime){
+    let x=Ax;
+    let y=Ay;
+    let cooltime=Acooltime;
+    let time=0;
+    let iscool=true;
+    return this;
+  }
+
+  method void draw(int x,int y){
+    var int pa;
+    if(iscool){
+      let pa=0;
+    }else{
+      time=time+1;
+      if(time>cooltime){
+        let time=0;
+        let iscool=true;
+      }
+      let pa=time*100/cooltime;
+      do Screen.drawRectangle(x , y , x+100 , y+pa);
+    }
+    return;
+  }
+
+  method boolean summon(){
+    if(iscool){
+      //newDog
+      let iscool=false;
+      let time=0;
+      return true;
+    }else{
+      return false;
+    }
+  }
+}
