@@ -15,34 +15,34 @@ class Theme {
         var int idx;
         var int dogidx, baddogidx;
         do Dog.Change_y(150);
-        do Dogs.push(Dog.new(10, 10, 10, 10, 1));
-        do BadDogs.push(Dog.new(100, 10, 10, 10, -1));
-        let DogCastle = Castle.new(100, 100, 100);
-        let BadDogCastle = Castle.new(300, 100, 100);
+        do Dogs.push(Dog.new(10, 10, 10, 5, 1));
+        // do BadDogs.push(Dog.new(100, 10, 10, 10, -1));
+        // let DogCastle = Castle.new(100, 100, 100);
+        let BadDogCastle = Castle.new(100, 100, 100);
         while(true) {
             do Sys.wait(50);
-            /** Find left most baddog */
-            let leftwall = 1024; // INF
+            /** Find right most dog */
+            let leftwall = 60; // dogcastle
             let dogidx = -1;
             let idx = 0;
             let it = Dogs.getFront(); 
             while(~(it = null)) {
                 let cur = it.getData();
-                if(cur.Location() + 60 < leftwall) {
+                if(cur.Location() + 60 > leftwall) {
                     let leftwall = cur.Location() + 60;
                     let dogidx = idx;
                 }
                 let idx = idx + 1;
                 let it = it.getNext(); 
             }
-            /** Find right most dog */
-            let rightwall = -1;
+            /** Find left most baddog */
+            let rightwall = 50; // baddogcastle
             let baddogidx = -1;
             let idx = 0;
             let it = BadDogs.getFront(); 
             while(~(it = null)) {
                 let cur = it.getData();
-                if(cur.Location() - 60 > rightwall) {
+                if(cur.Location() - 60 < rightwall) {
                     let rightwall = cur.Location() - 60;
                     let baddogidx = idx;
                 }
@@ -103,7 +103,7 @@ class Theme {
             /** Check if the game end */
 
             /** Draw blood */
-            do DogCastle.drawblood();
+            // do DogCastle.drawblood();
             do BadDogCastle.drawblood();
         } 
         return;
