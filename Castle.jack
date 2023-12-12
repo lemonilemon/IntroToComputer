@@ -1,0 +1,41 @@
+class Castle {
+  field int x;
+  static int y;
+  field int allHP;
+  field int nowHP;
+
+  constructor Castle new(int Ax, int Ay, int AHP){
+    let x = Ax;
+    let y = Ay;
+    let allHP = AHP;
+    let nowHP = AHP;
+    do drawblood();
+    return this;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  method void drawblood() {
+    var int pa;
+    let pa = (nowHP * 100) / allHP;
+    do Screen.setColor(true);
+    do Screen.drawRectangle(x , y , x+102 , y+7);
+    do Screen.setColor(false);
+    do Screen.drawRectangle(x+1 , y+1 , x+101 , y+6);
+    do Screen.setColor(true);
+    do Screen.drawRectangle(x+1 , y+1 , x+pa+1 , y+6);
+    return;
+  }
+
+  method void damage(int Adamage){
+    let nowHP = nowHP - Adamage;
+    if(nowHP < 0 | nowHP = 0){
+      let nowHP = 0;
+      do Output.printString("Game Over!");
+    }
+    return;
+  }
+}
