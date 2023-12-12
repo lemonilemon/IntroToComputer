@@ -7,7 +7,7 @@ class Castle {
   constructor Castle new(int Ax, int Ay, int AHP){
     let x = Ax;
     let y = Ay;
-    let HP = AHP;
+    let allHP = AHP;
     return this;
   }
 
@@ -19,17 +19,17 @@ class Castle {
   method void drawblood(int AallHP, int AnowHP) {
     var int pa;
     let pa = (AnowHP * 100) / AallHP;
-    Screen.setColor(true);
+    do Screen.setColor(true);
     do Screen.drawRectangle(x , y , x+102 , y+7);
-    Screen.setColor(false);
+    do Screen.setColor(false);
     do Screen.drawRectangle(x+1 , y+1 , x+101 , y+6);
-    Screen.setColor(true);
+    do Screen.setColor(true);
     do Screen.drawRectangle(x+1 , y+1 , x+pa , y+6);
     return;
   }
 
   method void damage(int Adamage){
-    nowHP = nowHP - Adamage;
+    let nowHP = nowHP - Adamage;
     return;
   }
 }
