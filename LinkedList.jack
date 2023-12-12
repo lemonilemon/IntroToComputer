@@ -22,12 +22,24 @@ class LinkedList {
     }
     method void pop(int k) {
         var cur;
+        var last;
         if(k >= sz) return;
         let cur = front;
-        while(k > 0) {
-            let k = k - 1;
-            let cur = cur.next;
+        let last = null;
+        if(k = 0) {
+            front = front.next;
         }
+        else {
+            while(k > 0) {
+                let last = cur;
+                let k = k - 1;
+                let cur = cur.next;
+            }
+        }
+        if(cur.next = null) {
+            let back = last;
+        }
+        do cur.dispose();
         let sz = sz - 1;
         return;
     }
