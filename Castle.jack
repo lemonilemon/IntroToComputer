@@ -9,7 +9,7 @@ class Castle {
     let y = Ay;
     let allHP = AHP;
     let nowHP = AHP;
-    do drawblood();
+    do draw();
     return this;
   }
 
