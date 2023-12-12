@@ -72,6 +72,9 @@ class Dog {
         return;
     }
 
+    method int Location() {
+        return x;
+    }
 
 
 
