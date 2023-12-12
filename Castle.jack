@@ -8,6 +8,7 @@ class Castle {
     let x = Ax;
     let y = Ay;
     let allHP = AHP;
+    let nowHP = AHP;
     return this;
   }
 
@@ -16,9 +17,9 @@ class Castle {
     return;
   }
 
-  method void drawblood(int AallHP, int AnowHP) {
+  method void drawblood() {
     var int pa;
-    let pa = (AnowHP * 100) / AallHP;
+    let pa = (nowHP * 100) / allHP;
     do Screen.setColor(true);
     do Screen.drawRectangle(x , y , x+102 , y+7);
     do Screen.setColor(false);
@@ -30,6 +31,13 @@ class Castle {
 
   method void damage(int Adamage){
     let nowHP = nowHP - Adamage;
+    if(nowHP > 0){
+      do drawblood();
+    }else{
+      nowHP = 0;
+      do drawblood();
+      do Output.printString("Game Over!");
+    }
     return;
   }
 }
