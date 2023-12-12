@@ -13,17 +13,18 @@ class UI {
     method int getopt() {
         var char key;
         while(key = 0) {
-            do Sys.wait(120);
-            do display();
+            do Sys.wait(20);
             let key = Keyboard.keyPressed();
             if(key = 130) { // left arrow
                 if(chosen_option = 1) {
                     let chosen_option = 0;
+                    do display();
                 }
             }
             if(key = 132) { // right arrow
                 if(chosen_option = 0) {
                     let chosen_option = 1;
+                    do display();
                 }
             }
             if(key = 88) { // x key
@@ -43,7 +44,6 @@ class UI {
         let y2 = 200;
         do Screen.setColor(true);
         do Screen.drawRectangle(x1, y1, x2, y2);
-        Output.moveCursor(
         if(chosen_option = 0) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x1 + d, y1 + d, x2 - d, y2 - d);
