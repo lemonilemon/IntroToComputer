@@ -156,4 +156,13 @@ class Theme {
         } 
         return;
     }
+
+    method void dispose() {
+        do DogCastle.dispose();
+        do BadDogCastle.dispose();
+        do Dongs.dispose();
+        do BadDogs.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
 }

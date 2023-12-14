@@ -42,7 +42,6 @@ class Castle {
     let nowHP = nowHP - Adamage;
     if(nowHP < 0 | nowHP = 0){
       let nowHP = 0;
-      do Output.printString("Game Over!");
       return true;
     }
     return false;
