@@ -1,4 +1,5 @@
 class Theme {
+    field int x, y;
     field int curPos;
     field Castle DogCastle, BadDogCastle;
     field LinkedList Dogs, BadDogs; 
@@ -6,6 +7,8 @@ class Theme {
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
         let BadDogs = LinkedList.new();
+        let DogCastle = Castle.new(true);
+        let BadDogCastle = Castle.new(false);
         return this;
     }
 
@@ -62,15 +65,19 @@ class Theme {
         var int targetDogIdx, targetBadDogIdx;
         var int damage;
         do Dog.Change_y(150);
-        do Dogs.push(Dog.new(1, true));
-        do BadDogs.push(Dog.new(0, false));
         do Castle.Change_y(100);
-        let DogCastle = Castle.new(true);
-        let BadDogCastle = Castle.new(false);
 
         while(true) {
             do Sys.wait(50);
 
+            /** For test purpose */
+            if(Dogs.size() < 3) {
+                do Dogs.push(Dog.new(0, true));
+            }
+            if(BadDogs.size() < 3) {
+                do BadDogs.push(Dog.new(0, false));
+            }
+             
             /** Find right most dog */
             let targetDogIdx = getTargetDog();   
             let targetDog = Dogs.getElement(targetDogIdx);
@@ -148,7 +155,6 @@ class Theme {
                 let it = it.getNext();
             }
             /** Draw UI */
-
 
             /** Draw blood */
             do DogCastle.draw();

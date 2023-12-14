@@ -11,6 +11,9 @@ class LinkedList {
     method Element getFront() {
         return front;
     }
+    method int size() {
+        return sz;
+    }
     method void push(Dog dog) {
         if(sz = 0) {
             let front = Element.new(dog);
