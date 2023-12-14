@@ -4,13 +4,21 @@ class Castle {
   field int allHP;
   field int nowHP;
 
-  constructor Castle new(int Ax, int Ay, int AHP){
-    let x = Ax;
-    let y = Ay;
-    let allHP = AHP;
-    let nowHP = AHP;
-    do draw();
+  constructor Castle new(boolean friend) {
+    if(friend) {
+        let x = 50;
+    }
+    else {
+        let x = 400;
+    }
+    let allHP = 100;
+    let nowHP = 100;
     return this;
+  }
+
+  function void Change_y(int Ay) {
+      let y = Ay;
+      return;
   }
 
   method void dispose() {
@@ -34,7 +42,6 @@ class Castle {
     let nowHP = nowHP - Adamage;
     if(nowHP < 0 | nowHP = 0){
       let nowHP = 0;
-      do Output.printString("Game Over!");
       return true;
     }
     return false;

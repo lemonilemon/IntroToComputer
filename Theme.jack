@@ -1,12 +1,17 @@
 class Theme {
+    field int x, y;
     field int curPos;
     field Castle DogCastle, BadDogCastle;
     field LinkedList Dogs, BadDogs; 
+
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
         let BadDogs = LinkedList.new();
+        let DogCastle = Castle.new(true);
+        let BadDogCastle = Castle.new(false);
         return this;
     }
+
     method int getTargetDog() {
         var int targetDogIdx;
         var int idx;
@@ -29,6 +34,7 @@ class Theme {
         do Dog.Change_leftWall(leftwall);
         return targetDogIdx;
     }
+
     method int getTargetBadDog() {
         var int targetBadDogIdx;
         var int idx;
@@ -51,6 +57,7 @@ class Theme {
         do Dog.Change_rightWall(rightwall);
         return targetBadDogIdx;
     }
+
     method void run() {     
         var Element it;
         var Dog cur;
@@ -58,13 +65,19 @@ class Theme {
         var int targetDogIdx, targetBadDogIdx;
         var int damage;
         do Dog.Change_y(150);
-        do Dogs.push(Dog.new(60, 10, 10, 5, 1));
-        do BadDogs.push(Dog.new(250, 10, 10, 10, -1));
-        let DogCastle = Castle.new(50, 100, 100);
-        let BadDogCastle = Castle.new(300, 100, 100);
+        do Castle.Change_y(100);
+
         while(true) {
             do Sys.wait(50);
 
+            /** For test purpose */
+            if(Dogs.size() < 3) {
+                do Dogs.push(Dog.new(0, true));
+            }
+            if(BadDogs.size() < 3) {
+                do BadDogs.push(Dog.new(0, false));
+            }
+             
             /** Find right most dog */
             let targetDogIdx = getTargetDog();   
             let targetDog = Dogs.getElement(targetDogIdx);
@@ -73,8 +86,6 @@ class Theme {
             let targetBadDogIdx = getTargetBadDog(); 
             let targetBadDog = BadDogs.getElement(targetBadDogIdx);
 
-            //** Start rendering */
-            do Screen.clearScreen();
  
             /** Dog Action */
             let it = Dogs.getFront(); 
@@ -122,7 +133,11 @@ class Theme {
                 let it = it.getNext();
             }
 
-            /** Check whether the dog is dead */
+            //** Start rendering */
+            do Screen.clearScreen();
+
+
+            /** Draw background */
 
 
 
@@ -139,12 +154,21 @@ class Theme {
                 do cur.show();
                 let it = it.getNext();
             }
-            /** Check if the game end */
+            /** Draw UI */
 
             /** Draw blood */
             do DogCastle.draw();
             do BadDogCastle.draw();
         } 
+        return;
+    }
+
+    method void dispose() {
+        do DogCastle.dispose();
+        do BadDogCastle.dispose();
+        do Dongs.dispose();
+        do BadDogs.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }
