@@ -6,18 +6,31 @@ class Dog {
     field int speed;
     static int rightWall;
     field int count;
-    field int direction;
+    field int direction; // 1 or -1
     field int atkcount;
     field int atkspeed;
     static int leftWall;
     field boolean die;
 
-    constructor Dog new(int Ax, int AHP, int AATK, int AATKspeed, int Adirection) {
-        let x = Ax;
-        let atkspeed = AATKspeed;
-        let HP = AHP;
-        let ATK = AATK;
-        let direction = Adirection;
+    constructor Dog new(int type, boolean friend) { // 0-based
+        if(friend) {
+            let x = 50; 
+            let direction = 1;
+        }
+        else {
+            let x = 400;
+            let direction = -1;
+        }
+        if(type = 0) { 
+            let HP = 200;
+            let ATK = 10;
+            let atkspeed = 10;
+        }
+        if(type = 1) {
+            let HP = 500;
+            let ATK = 50;
+            let atkspeed = 20;
+        }
         let count = 0;
         let atkcount =0;
         return this;
