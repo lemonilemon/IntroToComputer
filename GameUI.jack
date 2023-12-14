@@ -1,0 +1,69 @@
+class GameUI {
+    field Array options;
+    field int chosen_option;
+    constructor GameUI new() {
+        do Screen.clearScreen();
+        let options = Array.new(2);
+        let options[0] = "Dog1";
+        let options[1] = "Dog2";
+        let chosen_option = 0;
+        do display();
+        return this;
+    }
+    method int getopt() {
+        var char key;
+        let key = Keyboard.keyPressed();
+        if(key = 130) { // left arrow
+            if(chosen_option = 1) {
+                let chosen_option = 0;
+                do display();
+            }
+        }
+        if(key = 132) { // right arrow
+            if(chosen_option = 0) {
+                let chosen_option = 1;
+                do display();
+            }
+        }
+        if(key = 88) { // x key
+            if(chosen_option = 1) {
+                return 1;
+            }
+            if(chosen_option = 0) {
+                return 0;
+            }
+        }
+        let key = 0;
+        return -1;
+    }
+    method void display() {
+        var int x1, y1, x2, y2, d;
+        do Screen.clearScreen();
+        let d = 3;
+        let x1 = 20;
+        let y1 = 210;
+        let x2 = 120;
+        let y2 = 250;
+        do Screen.setColor(true);
+        do Screen.drawLine(0,200,511,200);
+        do Screen.drawRectangle(x1, y1, x2, y2);
+        if(chosen_option = 0) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1 + d, y1 + d, x2 - d, y2 - d);
+        }
+        let x1 = 140;
+        let x2 = 240;
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x1, y1, x2, y2);
+        if(chosen_option = 1) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1 + d, y1 + d, x2 - d, y2 - d);
+        }
+        return;
+    }
+    method void dispose() {
+        do Screen.clearScreen();
+        do Memory.deAlloc(this);
+        return;
+    }
+}
