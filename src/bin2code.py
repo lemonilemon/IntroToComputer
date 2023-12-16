@@ -5,6 +5,7 @@ with open("bin.txt", "r") as f:
             for c in range(32): # 512 / 16
                 cnt = r * 32 + c
                 s = line[c * 16 : (c + 1) * 16]
+                s = s[::-1]
                 if s == "0000000000000000":
                     continue
                 out.write(f"let screenLocation[{cnt}] = screenLocation | ")
