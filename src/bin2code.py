@@ -8,7 +8,7 @@ with open("bin.txt", "r") as f:
                 s = s[::-1]
                 if s == "0000000000000000":
                     continue
-                out.write(f"let screenLocation[{cnt}] = screenLocation | ")
+                out.write(f"let screenLocation[{cnt}] = ")
                 if s == "1000000000000000":
                     out.write(f"(~32767);\n")
                 elif s[0] == '0':
