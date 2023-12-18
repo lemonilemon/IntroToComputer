@@ -3,12 +3,14 @@ class Theme {
     field int curPos;
     field Castle DogCastle, BadDogCastle;
     field LinkedList Dogs, BadDogs; 
+    field GameUI ui;
 
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
         let BadDogs = LinkedList.new();
         let DogCastle = Castle.new(true);
         let BadDogCastle = Castle.new(false);
+        let ui = GameUI.new();
         return this;
     }
 
@@ -64,6 +66,9 @@ class Theme {
         var Dog targetDog, targetBadDog;
         var int targetDogIdx, targetBadDogIdx;
         var int damage;
+        var int opt;
+
+        let opt = -1;
         do Dog.Change_y(150);
         do Castle.Change_y(100);
 
@@ -71,9 +76,6 @@ class Theme {
             do Sys.wait(50);
 
             /** For test purpose */
-            if(Dogs.size() < 3) {
-                do Dogs.push(Dog.new(0, true));
-            }
             if(BadDogs.size() < 3) {
                 do BadDogs.push(Dog.new(0, false));
             }
@@ -154,7 +156,15 @@ class Theme {
                 do cur.show();
                 let it = it.getNext();
             }
+
             /** Draw UI */
+            do ui.display();
+            let opt = ui.getopt();
+
+            /** If clicked */
+            if(~opt) {
+                do Dogs.push(Dog.new(opt, true)); 
+            }
 
             /** Draw blood */
             do DogCastle.draw();

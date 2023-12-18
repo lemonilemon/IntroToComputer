@@ -38,7 +38,6 @@ class GameUI {
     }
     method void display() {
         var int x1, y1, x2, y2, d;
-        do Screen.clearScreen();
         let d = 3;
         let x1 = 20;
         let y1 = 210;
