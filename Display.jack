@@ -16,9 +16,10 @@ class Display {
         do Output.printString("Press any key to continue");
         return;
     }
+
     function void win() {
         var int screenLocation; 
-        let screenLocation = 16384 + 32 * 104 + 14;
+        let screenLocation = 19726;
         let screenLocation[0] = -1;
         let screenLocation[1] = -1;
         let screenLocation[2] = -1;
@@ -213,9 +214,10 @@ class Display {
         let screenLocation[1507] = -1;
         return;
     }
+
     function void gameOver() {
         var int screenLocation;
-        let screenLocation = 16384 + 32 * 96 + 14;
+        let screenLocation = 19470;
         let screenLocation[512] = -64;
         let screenLocation[513] = 2016;
         let screenLocation[514] = 30750;
