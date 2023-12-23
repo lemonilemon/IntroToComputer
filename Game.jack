@@ -8,10 +8,33 @@ class Game {
         var Theme theme;
         let ui = UI.new();
         let opt = ui.getopt();
-        do ui.dispose(); 
+        while(opt = 1) {
+            do ui.dispose();
+            //** Infor */
+            do Output.moveCursor(2, 2);
+            do Output.printString("How to Play");
+            do Output.moveCursor(4, 2);
+            do Output.printString("Switch current button with \"left-arrow\" and \"right-arrow\"");
+            do Output.moveCursor(5, 2);
+            do Output.printString("Select current button with \"x\"");
+            do Output.moveCursor(8, 2);
+            do Output.printString("Goal of the game");
+            do Output.moveCursor(10, 2);
+            do Output.printString("The Baddogs have attacked the kingdom, we need you to help!");
+            do Output.moveCursor(11, 2);
+            do Output.printString("Destroy their castle, and win the war!");
+            do Output.moveCursor(13, 2);
+            do Output.printString("Press any key to continue");
+            do Sys.wait(500);
+            //** Hold until keypressed */
+            do Keyboard.readChar();
+            let ui = UI.new();
+            let opt = ui.getopt();
+        } 
         if(opt = 0) {
             let theme = Theme.new();
             do theme.run();
+            do theme.dispose();
         } 
         return;
     }
