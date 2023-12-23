@@ -72,7 +72,7 @@ class Theme {
 
         let opt = -1;
         do Dog.Change_y(150);
-        do Castle.Change_y(100);
+        do Castle.Change_y(50);
 
         do Sys.wait(50);
         while(true) {
