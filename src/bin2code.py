@@ -1,5 +1,5 @@
-width = 512//16
-height = 256
+width = 144//16
+height = 52
 
 def toIntStr(s):
     if s == "1000000000000000":
