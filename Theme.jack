@@ -103,7 +103,7 @@ class Theme {
                     if(targetBadDog = null) {
                         if(BadDogCastle.damage(damage)) {
                             do Screen.clearScreen();
-                            do Output.printString("You win!");
+                            do Display.win();
                             do Sys.halt();    
                         }
                     } 
