@@ -1,0 +1,256 @@
+function GameUI.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 2
+call Array.new 1
+pop this 0
+push constant 0
+push this 0
+add
+push constant 4
+call String.new 1
+push constant 68
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 0
+add
+push constant 4
+call String.new 1
+push constant 68
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 50
+call String.appendChar 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+pop this 1
+push pointer 0
+call GameUI.display 1
+pop temp 0
+push pointer 0
+return
+function GameUI.getopt 1
+push argument 0
+pop pointer 0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 130
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop this 1
+push pointer 0
+call GameUI.display 1
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 132
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 1
+push constant 0
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 1
+pop this 1
+push pointer 0
+call GameUI.display 1
+pop temp 0
+label IF_FALSE3
+label IF_FALSE2
+push local 0
+push constant 88
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 1
+return
+label IF_FALSE5
+push this 1
+push constant 0
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 0
+return
+label IF_FALSE6
+label IF_FALSE4
+push constant 0
+pop local 0
+push constant 1
+neg
+return
+function GameUI.display 5
+push argument 0
+pop pointer 0
+push constant 3
+pop local 4
+push constant 20
+pop local 0
+push constant 210
+pop local 1
+push constant 120
+pop local 2
+push constant 250
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 200
+push constant 511
+push constant 200
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 3
+call Screen.drawRectangle 4
+pop temp 0
+push this 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 4
+add
+push local 1
+push local 4
+add
+push local 2
+push local 4
+sub
+push local 3
+push local 4
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 1
+push constant 0
+push local 0
+push constant 30
+add
+push constant 195
+call Display.dog 4
+pop temp 0
+push constant 21
+push constant 12
+call Output.moveCursor 2
+pop temp 0
+push constant 10
+call Output.printInt 1
+pop temp 0
+label IF_FALSE0
+push constant 140
+pop local 0
+push constant 240
+pop local 2
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 3
+call Screen.drawRectangle 4
+pop temp 0
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 4
+add
+push local 1
+push local 4
+add
+push local 2
+push local 4
+sub
+push local 3
+push local 4
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 2
+push constant 0
+push local 0
+push constant 30
+add
+push constant 205
+call Display.dog 4
+pop temp 0
+push constant 21
+push constant 27
+call Output.moveCursor 2
+pop temp 0
+push constant 30
+call Output.printInt 1
+pop temp 0
+label IF_FALSE1
+push constant 0
+return
+function GameUI.dispose 0
+push argument 0
+pop pointer 0
+call Screen.clearScreen 0
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

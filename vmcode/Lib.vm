@@ -1,0 +1,21 @@
+function Lib.xor 0
+push argument 0
+push argument 1
+not
+and
+push argument 1
+push argument 0
+not
+and
+or
+return
+function Lib.mux 0
+push argument 1
+push argument 2
+and
+push argument 0
+push argument 2
+not
+and
+call Lib.xor 2
+return
