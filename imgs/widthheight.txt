@@ -1,7 +1,7 @@
-start      width = 144/16
+start      width = 64/16
 background width = 512/16 height = 171
-end        width = 144/16
-howtoplay  width = 208/16 height = 56
-logo       width = 144/16
+end        width = 64/16
+howtoplay  width = 128/16
+logo       width = 72/16
 gooddog    width = 48/16
 baddog     width = 48/16
