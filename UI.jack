@@ -1943,15 +1943,15 @@ class UI {
         do drawBackground();
         do Start_display();
         if(chosen_option = 0) {
-            do UI.drawtriangle(16594);
+            do Screen.drawCircle(246,44,5);
         }
         do HTP_display();
         if(chosen_option =1) {
-            do UI.drawtriangle(19186);
+            do Screen.drawCircle(246,125,5);
         }
         do end_display();
         if(chosen_option = 2) {
-            do UI.drawtriangle(21554);
+            do Screen.drawCircle(246,199,5);
         }
         return;
     }
