@@ -1,7 +1,5 @@
-start1     width = 176/16 height = 59
-start2     width = 176/16 height = 59
+start      width = 176/16 height = 59
 background width = 512/16 height = 171
-end1       width = 144/16 height = 53
-end2       width = 144/16 height = 53
-howtoplay1 width = 208/16 height = 56
-howtoplay2 width = 208/16 height = 56
+end        width = 144/16 height = 53
+howtoplay  width = 208/16 height = 56
+logo       width = 144/16
