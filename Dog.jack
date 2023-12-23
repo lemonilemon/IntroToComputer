@@ -49,7 +49,7 @@ class Dog {
 
     /** Show the Dog. */
     method void show() {
-        do Display.dog(direction * dogtype, atkcount, x, y);
+        do Display.dog(direction * dogtype, Math.divide(atkcount, Math.divide(atkspeed, 3)), x, y);
         return;
     }
 
