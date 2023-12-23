@@ -36,7 +36,6 @@ class UI {
     }
     method void drawBackground() {
         var int screenLocation;
-        do Screen.clearScreen();
         let screenLocation = 17763;
         let screenLocation[35] = 120;
         let screenLocation[37] = 504;
@@ -1053,10 +1052,11 @@ class UI {
     method void display() {
         var int d;
         let d = 3;
+        do Screen.clearScreen();
         do Screen.setColor(true);
-        do Screen.drawRectangle(10,10,20,20);
+        do Screen.drawRectangle(5,5,507,251);
         do Screen.setColor(false);
-        do Screen.drawRectangle(10+d,10+d,502-d,246-d);
+        do Screen.drawRectangle(5+d,5+d,507-d,251-d);
         do drawBackground();
         do Output.moveCursor(5,32);
         do Output.printString("Press S to Start");
