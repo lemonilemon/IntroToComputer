@@ -335,6 +335,9 @@ class Display {
     function void dog(int type, int state, int x, int y) {
         var int screenLocation; 
         let screenLocation = 16384 + (32 * y) + Math.divide(x, 16);
+        if(type < 0) {
+            let screenLocation = screenLocation + 128;
+        }
         if(type = -1) {
             let screenLocation[1] = Lib.mux(screenLocation[1], 768, 768);
             let screenLocation[33] = Lib.mux(screenLocation[33], 1152, 1920);

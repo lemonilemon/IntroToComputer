@@ -35,6 +35,8 @@ with open("bin.txt", "r") as f1:
                     else:
                         if s1 == "0000000000000000":
                             continue
+                        if int(s1).bit_count() <= 3:
+                            continue
                         out.write(f"let screenLocation[{cnt}] = ")
                         out.write(toIntStr(s1))
                         out.write(";\n")
