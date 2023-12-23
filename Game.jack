@@ -1,5 +1,7 @@
 class Game {
+    field boolean start;
     constructor Game new() {
+        let start = false;
         return this;
     }
     method void run() {
@@ -31,17 +33,18 @@ class Game {
             let ui = UI.new();
             let opt = ui.getopt();
         } 
-        if(opt = 0) {
-            let theme = Theme.new();
-            do theme.run();
-            do theme.dispose();
-        } 
+        if(opt = 2) {
+            do Screen.clearScreen();
+            do Output.moveCursor(12, 8);
+            do Output.printString("Please comeback soon QAQ");
+            do Sys.halt();
+        }
+        let start = true;
         return;
     }
     method void dispose() {
         do Screen.clearScreen();
-        /* can't use for now */
-        // do Memory.deAlloc(this);
+        do Memory.deAlloc(this);
         return;
     }
 }

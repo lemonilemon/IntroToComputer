@@ -40,6 +40,7 @@ class Theme {
     }
 
     method int getTargetBadDog() {
+        var Display display;
         var int targetBadDogIdx;
         var int idx;
         var int rightwall;
@@ -69,6 +70,7 @@ class Theme {
         var int targetDogIdx, targetBadDogIdx;
         var int damage;
         var int opt;
+        var Display display;
 
         let opt = -1;
         do Dog.Change_y(150);
@@ -123,7 +125,7 @@ class Theme {
                     if(targetDog = null) { 
                         if(DogCastle.damage(damage)) {
                             do Screen.clearScreen();
-                            do Output.printString("You lose!");
+                            do Display.gameOver();
                             do Sys.halt();    
                         }
                     } 
