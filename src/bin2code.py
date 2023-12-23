@@ -1,9 +1,11 @@
+width = 224/16
+height = 56
 with open("bin.txt", "r") as f:
     with open("code.txt", "w") as out:
-        for r in range(256):
+        for r in range(height):
             line = f.readline()
-            for c in range(32): # 512 / 16
-                cnt = r * 32 + c
+            for c in range(width): # 512 / 16
+                cnt = r * width + c
                 s = line[c * 16 : (c + 1) * 16]
                 s = s[::-1]
                 if s == "0000000000000000":
