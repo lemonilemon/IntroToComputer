@@ -4,3 +4,4 @@ end        width = 144/16 height = 53
 howtoplay  width = 208/16 height = 56
 logo       width = 144/16
 gooddog    width = 48/16
+baddog     width = 48/16
