@@ -4,13 +4,14 @@ class Theme {
     field Castle DogCastle, BadDogCastle;
     field LinkedList Dogs, BadDogs; 
     field GameUI ui;
+    field Money money;
 
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
         let BadDogs = LinkedList.new();
-        let DogCastle = Castle.new(true);
-        let BadDogCastle = Castle.new(false);
+        let DogCastle = Castle.new(true); let BadDogCastle = Castle.new(false);
         let ui = GameUI.new();
+        let money = Money.new();
         return this;
     }
 
@@ -72,6 +73,7 @@ class Theme {
         do Dog.Change_y(150);
         do Castle.Change_y(100);
 
+        do Sys.wait(50);
         while(true) {
             do Sys.wait(50);
 
@@ -135,9 +137,25 @@ class Theme {
                 let it = it.getNext();
             }
 
+            /** Add money */
+            do money.add();
+            
+            /** If clicked */
+            if(~opt) { 
+                if(opt = 0) {
+                    if(money.sub(10)) {
+                        do Dogs.push(Dog.new(0, true)); 
+                    }
+                }
+                else {
+                    if(money.sub(15)) {
+                        do Dogs.push(Dog.new(1, true));
+                    }
+                }
+            }
+
             //** Start rendering */
             do Screen.clearScreen();
-
 
             /** Draw background */
 
@@ -161,10 +179,8 @@ class Theme {
             do ui.display();
             let opt = ui.getopt();
 
-            /** If clicked */
-            if(~opt) {
-                do Dogs.push(Dog.new(opt, true)); 
-            }
+            /** Draw money */
+            do money.draw();
 
             /** Draw blood */
             do DogCastle.draw();

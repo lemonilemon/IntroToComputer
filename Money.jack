@@ -1,9 +1,9 @@
 class Money {
-  static int money;
-  static int maxmoney;
-  static int count;
-  static int addmoney;
-  static int levelupcost;
+  field int money;
+  field int maxmoney;
+  field int count;
+  field int addmoney;
+  field int levelupcost;
 
   constructor Money new(){
     let money = 0;
@@ -14,17 +14,17 @@ class Money {
     return this;
   }
 
-  function void draw(){
-    do Output.moveCursor(470,20);
+  method void draw(){
+    do Output.moveCursor(19,50);
     do Output.printInt(money);
-    do Output.moveCursor(490,20);
+    do Output.moveCursor(20,50);
     do Output.printString("/");
-    do Output.moveCursor(500,20);
+    do Output.moveCursor(21,50);
     do Output.printInt(maxmoney);
     return;
   }
 
-  function void add(){
+  method void add(){
     let count = count + 1;
     if(maxmoney-money>0 & count-(count/5*5)=0){
       let money = money + addmoney;
@@ -32,7 +32,7 @@ class Money {
     return;
   }
 
-  function boolean sub(int cost){
+  method boolean sub(int cost){
     if(money-cost>0|money-cost=0){
       let money = money - cost;
       return true;
@@ -40,7 +40,7 @@ class Money {
     return false;
   }
 
-  function boolean levelup(){
+  method boolean levelup(){
     if(money-levelupcost>0|money-levelupcost=0){
       let money = money - levelupcost;
       let maxmoney = maxmoney + 500;

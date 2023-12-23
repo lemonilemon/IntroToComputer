@@ -3,9 +3,10 @@ class Dog {
     static int y;
     field int HP;
     field int ATK;
-    field int speed;
+    field int movespeed;
+    field int range;
     static int rightWall;
-    field int count;
+    field int movecount;
     field int direction; // 1 or -1
     field int atkcount;
     field int atkspeed;
@@ -31,7 +32,9 @@ class Dog {
             let ATK = 50;
             let atkspeed = 20;
         }
-        let count = 0;
+        let movespeed = 1;
+        let range = 5;
+        let movecount = 0;
         let atkcount =0;
         return this;
     }
@@ -51,7 +54,7 @@ class Dog {
 
     method int act() {
         if(direction = 1) {
-            if(x = rightWall) {
+            if(x + range > rightWall) {
                 return attack();
             }
             else {
@@ -60,7 +63,7 @@ class Dog {
             }
         }        
         else {
-            if(x = leftWall) {
+            if(x - range < leftWall) {
                 return attack();
             }
             else {
@@ -70,18 +73,18 @@ class Dog {
         } 
     } 
     method void move() {
-        var int mod;
-        let mod = count - ((count / 2)*2);
-        if(mod = 0) {
+        let atkcount = 0;
+        let movecount = movecount + 1;
+        if(movecount = movespeed) {
             let x = x + direction;
-            let count = 0;
+            let movecount = 0;
         }
-        let count = count + 1;
         return;
     }
 
     /** Let Dog Attack */
     method int attack() {
+        let movecount = 0;
         let atkcount = atkcount +1;
         if(atkcount = atkspeed) {
             let atkcount = 0;
@@ -114,7 +117,5 @@ class Dog {
         let rightWall = val;
         return;
     }
-
-
 
 }
