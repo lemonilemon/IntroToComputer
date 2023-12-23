@@ -1,0 +1,8 @@
+class Lib {
+    function int xor(int a, int b) {
+        return (a & (~b)) | (b & (~a));
+    }
+    function int mux(int a, int b, int sel) {
+        return Lib.xor((b & sel), (a & (~sel)));
+    }
+}

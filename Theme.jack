@@ -9,7 +9,8 @@ class Theme {
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
         let BadDogs = LinkedList.new();
-        let DogCastle = Castle.new(true); let BadDogCastle = Castle.new(false);
+        let DogCastle = Castle.new(true); 
+        let BadDogCastle = Castle.new(false);
         let ui = GameUI.new();
         let money = Money.new();
         return this;
@@ -141,14 +142,15 @@ class Theme {
             do money.add();
             
             /** If clicked */
+            let opt = ui.getopt();
             if(~opt) { 
                 if(opt = 0) {
-                    if(money.sub(10)) {
+                    if(money.sub(10) = true) {
                         do Dogs.push(Dog.new(0, true)); 
                     }
                 }
                 else {
-                    if(money.sub(15)) {
+                    if(money.sub(15) = true) {
                         do Dogs.push(Dog.new(1, true));
                     }
                 }
@@ -177,7 +179,6 @@ class Theme {
 
             /** Draw UI */
             do ui.display();
-            let opt = ui.getopt();
 
             /** Draw money */
             do money.draw();
@@ -192,7 +193,7 @@ class Theme {
     method void dispose() {
         do DogCastle.dispose();
         do BadDogCastle.dispose();
-        do Dongs.dispose();
+        do Dogs.dispose();
         do BadDogs.dispose();
         do Memory.deAlloc(this);
         return;

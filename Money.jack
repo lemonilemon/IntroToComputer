@@ -33,7 +33,7 @@ class Money {
   }
 
   method boolean sub(int cost){
-    if(money-cost>0|money-cost=0){
+    if((money - cost > 0)|(money - cost = 0)){
       let money = money - cost;
       return true;
     }
@@ -41,7 +41,7 @@ class Money {
   }
 
   method boolean levelup(){
-    if(money-levelupcost>0|money-levelupcost=0){
+    if((money - levelupcost > 0)|(money - levelupcost = 0)){
       let money = money - levelupcost;
       let maxmoney = maxmoney + 500;
       let addmoney = addmoney + 1;
