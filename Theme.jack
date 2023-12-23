@@ -5,6 +5,8 @@ class Theme {
     field LinkedList Dogs, BadDogs; 
     field GameUI ui;
     field Money money;
+    field boolean st1, st2, st3;
+    field int counter1, counter2, counter3;
 
     constructor Theme new() {
         let Dogs = LinkedList.new(); // Number of dogs
@@ -13,6 +15,12 @@ class Theme {
         let BadDogCastle = Castle.new(false);
         let ui = GameUI.new();
         let money = Money.new();
+        let st1 = false;
+        let st2 = false;
+        let st3 = false;
+        let counter1 = 0;
+        let counter2 = 0;
+        let counter3 = 0;
         return this;
     }
 
@@ -27,8 +35,8 @@ class Theme {
         let idx = 0;
         while(~(it = null)) {
             let cur = it.getData();
-            if(cur.Location() + 60 > leftwall) {
-                let leftwall = cur.Location() + 60;
+            if(cur.Location() + 48 > leftwall) {
+                let leftwall = cur.Location() + 48;
                 let targetDogIdx = idx;
             }
             let idx = idx + 1;
@@ -46,13 +54,13 @@ class Theme {
         var int rightwall;
         var Dog cur;
         var Element it;
-        let rightwall = 300; // baddogcastle
+        let rightwall = 340; // baddogcastle
         let it = BadDogs.getFront(); 
         let idx = 0;
         while(~(it = null)) {
             let cur = it.getData();
-            if(cur.Location() - 60 < rightwall) {
-                let rightwall = cur.Location() - 60;
+            if(cur.Location() < rightwall) {
+                let rightwall = cur.Location();
                 let targetBadDogIdx = idx;
             }
             let idx = idx + 1;
@@ -78,11 +86,38 @@ class Theme {
 
         do Sys.wait(50);
         while(true) {
-            do Sys.wait(100);
-
-            /** For test purpose */
-            if(BadDogs.size() < 1) {
-                do BadDogs.push(Dog.new(0, false));
+            do Sys.wait(50);
+            if(BadDogs.size() < 5) {
+                let counter1 = counter1 + 1;
+                let counter2 = counter2 + 1;
+                let counter3 = counter3 + 1;
+                if((~st1) & (counter1 = 50)) {
+                    let st1 = true;
+                    do BadDogs.push(Dog.new(0, false));
+                    let counter1 = 0;
+                }
+                if(st1 & (counter1 = 200)) {
+                    let counter1 = 0;
+                    do BadDogs.push(Dog.new(0, false));
+                }
+                if((~st2) & (counter2 = 1000)) {
+                    let st2 = true;
+                    do BadDogs.push(Dog.new(0, false));
+                    let counter2 = 0;
+                }
+                if(st2 & (counter2 = 120)) {
+                    let counter2 = 0;
+                    do BadDogs.push(Dog.new(0, false));
+                }
+                if((~st3) & (counter1 = 2000)) {
+                    let st3 = true;
+                    do BadDogs.push(Dog.new(1, false));
+                    let counter3 = 0;
+                }
+                if(st3 & (counter3 = 200)) {
+                    let counter3 = 0;
+                    do BadDogs.push(Dog.new(1, false));
+                }
             }
              
             /** Find right most dog */
@@ -145,14 +180,14 @@ class Theme {
             
             /** If clicked */
             let opt = ui.getopt();
-            if(~opt) { 
+            if((~opt) & (Dogs.size() < 5)) { 
                 if(opt = 0) {
-                    if(money.sub(10) = true) {
+                    if(money.sub(10)) {
                         do Dogs.push(Dog.new(0, true)); 
                     }
                 }
                 else {
-                    if(money.sub(15) = true) {
+                    if(money.sub(30)) {
                         do Dogs.push(Dog.new(1, true));
                     }
                 }
