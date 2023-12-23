@@ -9,7 +9,7 @@ class Castle {
         let x = 50;
     }
     else {
-        let x = 400;
+        let x = 330;
     }
     let allHP = 100;
     let nowHP = 100;
