@@ -7,10 +7,10 @@ class Money {
 
   constructor Money new(){
     let money = 0;
-    let maxmoney = 1000;
+    let maxmoney = 100;
     let count = 0;
     let addmoney = 1;
-    let levelupcost = 200;
+    let levelupcost = 50;
     return this;
   }
 

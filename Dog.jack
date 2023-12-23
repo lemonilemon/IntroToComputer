@@ -16,11 +16,11 @@ class Dog {
 
     constructor Dog new(int type, boolean friend) { // 0-based
         if(friend) {
-            let x = 50; 
+            let x = 40; 
             let direction = 1;
         }
         else {
-            let x = 400;
+            let x = 470;
             let direction = -1;
         }
         let dogtype = type + 1;
@@ -35,7 +35,7 @@ class Dog {
             let atkspeed = 20;
         }
         let movespeed = 1;
-        let range = 5;
+        let range = 50;
         let movecount = 0;
         let atkcount = 0;
         return this;
@@ -73,6 +73,7 @@ class Dog {
             }
         } 
     } 
+
     method void move() {
         let atkcount = 0;
         let movecount = movecount + 1;
@@ -118,5 +119,4 @@ class Dog {
         let rightWall = val;
         return;
     }
-
 }
