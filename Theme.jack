@@ -76,7 +76,7 @@ class Theme {
 
         do Sys.wait(50);
         while(true) {
-            do Sys.wait(50);
+            do Sys.wait(100);
 
             /** For test purpose */
             if(BadDogs.size() < 3) {
