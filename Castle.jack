@@ -6,10 +6,10 @@ class Castle {
 
   constructor Castle new(boolean friend) {
     if(friend) {
-        let x = 50;
+        let x = 10;
     }
     else {
-        let x = 330;
+        let x = 400;
     }
     let allHP = 100;
     let nowHP = 100;
