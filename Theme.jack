@@ -81,7 +81,7 @@ class Theme {
             do Sys.wait(100);
 
             /** For test purpose */
-            if(BadDogs.size() < 3) {
+            if(BadDogs.size() < 1) {
                 do BadDogs.push(Dog.new(0, false));
             }
              

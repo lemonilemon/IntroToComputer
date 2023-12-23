@@ -330,4 +330,97 @@ class Display {
         let screenLocation[1507] = 16143;
         return;
     }
+    function void dog(int type, int state, int x, int y) {
+        var int screenLocation; 
+        let screenLocation = 16384 + (32 * y) + Math.divide(x, 16);
+        if(type = -1) {
+            let screenLocation[1] = Lib.mux(screenLocation[1], 768, 768);
+            let screenLocation[33] = Lib.mux(screenLocation[33], 1152, 1920);
+            let screenLocation[65] = Lib.mux(screenLocation[65], 1152, 1920);
+            let screenLocation[66] = Lib.mux(screenLocation[66], 1792, 1792);
+            let screenLocation[97] = Lib.mux(screenLocation[97], 3200, 3968);
+            let screenLocation[98] = Lib.mux(screenLocation[98], 2176, 3968);
+            let screenLocation[129] = Lib.mux(screenLocation[129], 2176, 3968);
+            let screenLocation[130] = Lib.mux(screenLocation[130], 2112, 4032);
+            let screenLocation[161] = Lib.mux(screenLocation[161], 2176, 3968);
+            let screenLocation[162] = Lib.mux(screenLocation[162], 2112, 4032);
+            let screenLocation[193] = Lib.mux(screenLocation[193], -16256, -128);
+            let screenLocation[194] = Lib.mux(screenLocation[194], 2083, 4071);
+            let screenLocation[225] = Lib.mux(screenLocation[225], 7296, -128);
+            let screenLocation[226] = Lib.mux(screenLocation[226], 2072, 4095);
+            let screenLocation[257] = Lib.mux(screenLocation[257], 768, -256);
+            let screenLocation[258] = Lib.mux(screenLocation[258], 2080, 4095);
+            let screenLocation[289] = Lib.mux(screenLocation[289], 384, -128);
+            let screenLocation[290] = Lib.mux(screenLocation[290], 2080, 4095);
+            let screenLocation[321] = Lib.mux(screenLocation[321], 128, -64);
+            let screenLocation[322] = Lib.mux(screenLocation[322], 2048, 4095);
+            let screenLocation[353] = Lib.mux(screenLocation[353], -32704, -64);
+            let screenLocation[354] = Lib.mux(screenLocation[354], 1057, 2047);
+            let screenLocation[385] = Lib.mux(screenLocation[385], 16448, -64);
+            let screenLocation[386] = Lib.mux(screenLocation[386], 1056, 2047);
+            let screenLocation[417] = Lib.mux(screenLocation[417], 8256, -64);
+            let screenLocation[418] = Lib.mux(screenLocation[418], 544, 1023);
+            let screenLocation[449] = Lib.mux(screenLocation[449], -12256, -32);
+            let screenLocation[450] = Lib.mux(screenLocation[450], 672, 1023);
+            let screenLocation[481] = Lib.mux(screenLocation[481], -16288, -32);
+            let screenLocation[482] = Lib.mux(screenLocation[482], 673, 1023);
+            let screenLocation[513] = Lib.mux(screenLocation[513], -15648, -32);
+            let screenLocation[514] = Lib.mux(screenLocation[514], 513, 1023);
+            let screenLocation[545] = Lib.mux(screenLocation[545], -15008, -32);
+            let screenLocation[546] = Lib.mux(screenLocation[546], 448, 511);
+            let screenLocation[577] = Lib.mux(screenLocation[577], -14864, -16);
+            let screenLocation[578] = Lib.mux(screenLocation[578], 160, 255);
+            let screenLocation[609] = Lib.mux(screenLocation[609], 112, -16);
+            let screenLocation[610] = Lib.mux(screenLocation[610], 400, 511);
+            let screenLocation[641] = Lib.mux(screenLocation[641], 40, -8);
+            let screenLocation[642] = Lib.mux(screenLocation[642], 272, 511);
+            let screenLocation[673] = Lib.mux(screenLocation[673], 240, -16);
+            let screenLocation[674] = Lib.mux(screenLocation[674], 16, 1023);
+            let screenLocation[705] = Lib.mux(screenLocation[705], 304, -16);
+            let screenLocation[706] = Lib.mux(screenLocation[706], 16, 1023);
+            let screenLocation[737] = Lib.mux(screenLocation[737], 800, -32);
+            let screenLocation[738] = Lib.mux(screenLocation[738], 1036, 2047);
+            let screenLocation[769] = Lib.mux(screenLocation[769], -832, -64);
+            let screenLocation[770] = Lib.mux(screenLocation[770], 3073, 4095);
+            let screenLocation[801] = Lib.mux(screenLocation[801], 3072, -1024);
+            let screenLocation[802] = Lib.mux(screenLocation[802], 2048, 8191);
+            let screenLocation[833] = Lib.mux(screenLocation[833], 1024, -1024);
+            let screenLocation[834] = Lib.mux(screenLocation[834], 4096, 8191);
+            let screenLocation[865] = Lib.mux(screenLocation[865], 1024, -1024);
+            let screenLocation[866] = Lib.mux(screenLocation[866], 4096, 8191);
+            let screenLocation[897] = Lib.mux(screenLocation[897], 1024, -1024);
+            let screenLocation[898] = Lib.mux(screenLocation[898], 8192, 16383);
+            let screenLocation[929] = Lib.mux(screenLocation[929], 1024, -1024);
+            let screenLocation[930] = Lib.mux(screenLocation[930], 8192, 16383);
+            let screenLocation[961] = Lib.mux(screenLocation[961], 1024, -1024);
+            let screenLocation[962] = Lib.mux(screenLocation[962], 16384, 32767);
+            let screenLocation[993] = Lib.mux(screenLocation[993], 0, -1024);
+            let screenLocation[994] = Lib.mux(screenLocation[994], 16384, 32767);
+            let screenLocation[1025] = Lib.mux(screenLocation[1025], 0, -1024);
+            let screenLocation[1026] = Lib.mux(screenLocation[1026], 16384, 32767);
+            let screenLocation[1057] = Lib.mux(screenLocation[1057], 0, -512);
+            let screenLocation[1058] = Lib.mux(screenLocation[1058], -16384, -1);
+            let screenLocation[1089] = Lib.mux(screenLocation[1089], 0, -512);
+            let screenLocation[1090] = Lib.mux(screenLocation[1090], (~32767), -1);
+            let screenLocation[1121] = Lib.mux(screenLocation[1121], 0, -512);
+            let screenLocation[1122] = Lib.mux(screenLocation[1122], -32736, -1);
+            let screenLocation[1153] = Lib.mux(screenLocation[1153], 4096, -512);
+            let screenLocation[1154] = Lib.mux(screenLocation[1154], -32766, -1);
+            let screenLocation[1185] = Lib.mux(screenLocation[1185], -3584, -512);
+            let screenLocation[1186] = Lib.mux(screenLocation[1186], 16484, 32767);
+            let screenLocation[1217] = Lib.mux(screenLocation[1217], -28672, -25088);
+            let screenLocation[1218] = Lib.mux(screenLocation[1218], 13447, 16319);
+            let screenLocation[1249] = Lib.mux(screenLocation[1249], 4352, -256);
+            let screenLocation[1250] = Lib.mux(screenLocation[1250], 6284, 8127);
+            let screenLocation[1281] = Lib.mux(screenLocation[1281], -11904, -128);
+            let screenLocation[1282] = Lib.mux(screenLocation[1282], 4232, 8127);
+            let screenLocation[1313] = Lib.mux(screenLocation[1313], 17792, 28544);
+            let screenLocation[1314] = Lib.mux(screenLocation[1314], 2376, 4088);
+            let screenLocation[1346] = Lib.mux(screenLocation[1346], 1960, 1976);
+            let screenLocation[1378] = Lib.mux(screenLocation[1378], 256, 256);
+        }
+        if(type = 1) {
+        }
+        return;
+    }
 }

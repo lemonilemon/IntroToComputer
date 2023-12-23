@@ -1,7 +1,3 @@
-width = int(input("What's the image width(in bits)?")) // 64
-height = int(input("What's the image height(in bits)?"))
-
-
 def toIntStr(s):
     if s == "1000000000000000":
         return "(~32767)"
@@ -9,6 +5,10 @@ def toIntStr(s):
         return f"{int(s[1:], 2)}"
     return f"-{32768 - int(s[1:], 2)}"
 
+width = int(input("What's the image width(in bits)?")) // 16
+height = int(input("What's the image height(in bits)?"))
+print(f"width = {width}")
+print(f"height = {height}")
 mux = input("Mux or not(y/n):")
 with open("bin.txt", "r") as f1:
     with open("bian.txt", "r") as f2:

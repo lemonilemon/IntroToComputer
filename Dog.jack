@@ -10,6 +10,7 @@ class Dog {
     field int direction; // 1 or -1
     field int atkcount;
     field int atkspeed;
+    field int dogtype;
     static int leftWall;
     field boolean die;
 
@@ -22,12 +23,13 @@ class Dog {
             let x = 400;
             let direction = -1;
         }
-        if(type = 0) { 
+        let dogtype = type + 1;
+        if(dogtype = 1) { 
             let HP = 200;
             let ATK = 10;
             let atkspeed = 10;
         }
-        if(type = 1) {
+        if(dogtype = 2) {
             let HP = 500;
             let ATK = 50;
             let atkspeed = 20;
@@ -35,7 +37,7 @@ class Dog {
         let movespeed = 1;
         let range = 5;
         let movecount = 0;
-        let atkcount =0;
+        let atkcount = 0;
         return this;
     }
 
@@ -47,8 +49,7 @@ class Dog {
 
     /** Show the Dog. */
     method void show() {
-        do Screen.setColor(true); 
-        do Screen.drawRectangle(x , y, x + 50, y + 50);
+        do Display.dog(direction * dogtype, atkcount, x, y);
         return;
     }
 
