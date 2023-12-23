@@ -620,7 +620,7 @@ class Display {
     }
     function void goodCastle() {
         var int screenLocation;
-        let screenLocation = 20000;
+        let screenLocation = 17280;
         let screenLocation[64] = 112;
         let screenLocation[96] = 248;
         let screenLocation[128] = 908;
