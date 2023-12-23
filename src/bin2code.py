@@ -1,5 +1,6 @@
-width = 144//16
-height = 54
+width = int(input("What's the image width(in bits)?")) // 64
+height = int(input("What's the image height(in bits)?"))
+
 
 def toIntStr(s):
     if s == "1000000000000000":
