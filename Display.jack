@@ -1816,6 +1816,6 @@ class Display {
         let screenLocation[5509] = 64;
         let screenLocation[5536] = 64;
         let screenLocation[5537] = 24576;
-
+        return;
     }
 }
