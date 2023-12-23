@@ -24,18 +24,17 @@ with open("bin.txt", "r") as f1:
                     s2 = s2[::-1]
                     print(f"s1 = {s1}")
                     print(f"s2 = {s2}")
-                    if(mux == "y"):
+                    if mux == "y" and s2 != "1111111111111111":
                         if s2 == "0000000000000000":
-                            continue;
+                            continue
                         out.write(f"let screenLocation[{cnt}] = Lib.mux(screenLocation[{cnt}], ")
-                        out.write(toIntStr(s1)); 
-                        out.write(", ");
-                        out.write(toIntStr(s2));
-                        out.write(");\n");
+                        out.write(toIntStr(s1))
+                        out.write(", ")
+                        out.write(toIntStr(s2))
+                        out.write(");\n")
                     else:
                         if s1 == "0000000000000000":
-                            continue;
+                            continue
                         out.write(f"let screenLocation[{cnt}] = ")
-                        out.write(toIntStr(s1)); 
-                        out.write(";\n");
-
+                        out.write(toIntStr(s1))
+                        out.write(";\n")

@@ -162,6 +162,7 @@ class Theme {
             do Screen.clearScreen();
 
             /** Draw background */
+            do Display.goodCastle();
 
 
 
