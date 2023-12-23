@@ -15,25 +15,17 @@ class UI {
         while(key = 0) {
             do Sys.wait(100);
             let key = Keyboard.keyPressed();
-            if(key = 133) { // down arrow
-                if(chosen_option = 1) {
-                    let chosen_option = 2;
-                    do display();
-                }
-                if(chosen_option = 0) {
-                    let chosen_option = 1;
-                    do display();
-                }
+            if(key = 83) { // s
+                let chosen_option = 0;
+                return chosen_option;
             }
-            if(key = 131) { // Up
-                if(chosen_option = 1) {
-                    let chosen_option = 0;
-                    do display();
-                }
-                if(chosen_option = 2) {
-                    let chosen_option = 1;
-                    do display();
-                }
+            if(key = 81) { // q
+                let chosen_option = 2;
+                return chosen_option;
+            }
+            if(key = 72) { //h
+                let chosen_option = 1;
+                return chosen_option;
             }
             if(key = 88) { // x key
                 return chosen_option;
@@ -41,17 +33,6 @@ class UI {
             let key = 0;
         }
         return -1;
-    }
-    function void drawtriangle(int scrL) {
-        var int screenLocation;
-        let screenLocation = scrL;
-        let screenLocation[32] = -4;
-        let screenLocation[128] = -4094;
-        let screenLocation[160] = 4098;
-        let screenLocation[192] = 4098;
-        let screenLocation[224] = -4094;
-        let screenLocation[256] = 12290;
-        return;
     }
     method void drawBackground() {
         var int screenLocation;
@@ -1070,19 +1051,27 @@ class UI {
         return;
     }
     method void display() {
+        var int d;
+        let d = 3;
+        do Screen.setColor(true);
+        do Screen.drawRectangle(10,10,20,20);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(10+d,10+d,502-d,246-d);
         do drawBackground();
-        do Start_display();
-        if(chosen_option = 0) {
-            do Screen.drawCircle(246,44,5);
-        }
-        do HTP_display();
-        if(chosen_option =1) {
-            do Screen.drawCircle(246,125,5);
-        }
-        do end_display();
-        if(chosen_option = 2) {
-            do Screen.drawCircle(246,199,5);
-        }
+        do Output.moveCursor(5,32);
+        do Output.printString("Press S to Start");
+        do Output.moveCursor(7,32);
+        do Output.printString("Press Q to Quit");
+        do Output.moveCursor(9,32);
+        do Output.printString("Press H for Help");
+        do Output.moveCursor(15,32);
+        do Output.printString("Design by:");
+        do Output.moveCursor(16,32);
+        do Output.printString("   Lemonilemon");
+        do Output.moveCursor(17,32);
+        do Output.printString("   FanWtbCSEg");
+        do Output.moveCursor(18,32);
+        do Output.printString("   Tslofiza");
         return;
     }
     method void dispose() {
