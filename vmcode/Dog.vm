@@ -1,0 +1,220 @@
+function Dog.new 0
+push constant 11
+call Memory.alloc 1
+pop pointer 0
+push argument 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 40
+pop this 0
+push constant 1
+pop this 6
+goto IF_END0
+label IF_FALSE0
+push constant 470
+pop this 0
+push constant 1
+neg
+pop this 6
+label IF_END0
+push argument 0
+push constant 1
+add
+pop this 9
+push this 9
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 200
+pop this 1
+push constant 10
+pop this 2
+push constant 10
+pop this 8
+label IF_FALSE1
+push this 9
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 500
+pop this 1
+push constant 50
+pop this 2
+push constant 20
+pop this 8
+label IF_FALSE2
+push constant 1
+pop this 3
+push constant 50
+pop this 4
+push constant 0
+pop this 5
+push constant 0
+pop this 7
+push pointer 0
+return
+function Dog.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Dog.show 0
+push argument 0
+pop pointer 0
+push this 6
+push this 9
+call Math.multiply 2
+push this 7
+push this 8
+push constant 3
+call Math.divide 2
+call Math.divide 2
+push this 0
+push static 0
+call Display.dog 4
+pop temp 0
+push constant 0
+return
+function Dog.act 0
+push argument 0
+pop pointer 0
+push this 6
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push this 4
+add
+push static 1
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call Dog.attack 1
+return
+goto IF_END1
+label IF_FALSE1
+push pointer 0
+call Dog.move 1
+pop temp 0
+push constant 0
+return
+label IF_END1
+goto IF_END0
+label IF_FALSE0
+push this 0
+push this 4
+sub
+push static 2
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Dog.attack 1
+return
+goto IF_END2
+label IF_FALSE2
+push pointer 0
+call Dog.move 1
+pop temp 0
+push constant 0
+return
+label IF_END2
+label IF_END0
+function Dog.move 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 7
+push this 5
+push constant 1
+add
+pop this 5
+push this 5
+push this 3
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push this 6
+add
+pop this 0
+push constant 0
+pop this 5
+label IF_FALSE0
+push constant 0
+return
+function Dog.attack 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 5
+push this 7
+push constant 1
+add
+pop this 7
+push this 7
+push this 8
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop this 7
+push this 2
+return
+label IF_FALSE0
+push constant 0
+return
+function Dog.TakeAnyDamage 0
+push argument 0
+pop pointer 0
+push this 1
+push argument 1
+sub
+pop this 1
+push this 1
+push constant 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+return
+label IF_FALSE0
+push constant 0
+return
+function Dog.Location 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Dog.Change_y 0
+push argument 0
+pop static 0
+push constant 0
+return
+function Dog.Change_leftWall 0
+push argument 0
+pop static 2
+push constant 0
+return
+function Dog.Change_rightWall 0
+push argument 0
+pop static 1
+push constant 0
+return
