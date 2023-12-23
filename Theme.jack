@@ -200,8 +200,6 @@ class Theme {
             do Display.goodCastle();
             do Display.badCastle();
 
-
-
             /** Draw Dogs */
             let it = Dogs.getFront(); 
             while(~(it = null)) {
