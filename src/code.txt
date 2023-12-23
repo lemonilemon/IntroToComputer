@@ -1,6 +1,0 @@
-let screenLocation[32] = -4;
-let screenLocation[128] = -4094;
-let screenLocation[160] = 4098;
-let screenLocation[192] = 4098;
-let screenLocation[224] = -4094;
-let screenLocation[256] = 12290;
