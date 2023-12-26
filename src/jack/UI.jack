@@ -1071,7 +1071,7 @@ class UI {
         do Output.moveCursor(17,32);
         do Output.printString("   FanWtbCSEg");
         do Output.moveCursor(18,32);
-        do Output.printString("   Tslofiza");
+        do Output.printString("   Tsloflza");
         return;
     }
     method void dispose() {
